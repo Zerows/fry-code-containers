@@ -4,7 +4,7 @@ WORKDIR /app
 COPY code-fry /app
 RUN ./gradlew clean build
 
-FROM ruby:latest-alpine
+FROM ruby:alpine
 RUN mkdir /app
 WORKDIR /app
 RUN apk --update add openjdk8-jre
