@@ -4,10 +4,13 @@ WORKDIR /app
 COPY code-fry /app
 RUN ./gradlew clean build
 
-FROM ruby:alpine
+
+FROM alpine:3.7
 RUN mkdir /app
 WORKDIR /app
-RUN apk --update add openjdk8-jre
+
+RUN apk --update add openjdk8-jre \
+            ruby
 COPY --from=jar-builder /app /app
 
 RUN mkdir /home/runner
